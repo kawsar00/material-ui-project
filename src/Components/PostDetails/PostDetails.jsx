@@ -19,32 +19,33 @@ const PostDetails = () => {
   useEffect(() => {
     const url = `https://jsonplaceholder.typicode.com/comments?postId=${postId}`
     fetch(url)
-    .then(res => res.json())
-    .then(comment => setComments(comment))
+      .then(res => res.json())
+      .then(comment => setComments(comment))
   }, [])
 
-//postDetails style
-const postDetailStyle = {
-  background: 'rgb(242 242 242)',
-  boxShadow: '4px 5px 15px grey',
-  padding: '20px',
-}
-
+  //postDetails style
+  const postDetailStyle = {
+    background: 'rgb(242 242 242)',
+    boxShadow: '4px 5px 15px grey',
+    padding: '20px',
+    width: '80%',
+    margin: 'auto',
+    borderRadius: '20px',
+  }
   return (
     <div>
-      <h1 style={{textAlign: 'center'}}>Post Details</h1>
+      <h1 style={{ textAlign: 'center' }}>Post Details</h1>
       <div style={postDetailStyle}>
-        <h1>Title: {postDetails.title}</h1>
+        <h3>{postDetails.title}</h3>
         <p>{postDetails.body}</p>
       </div>
       <div>
-      <h2>Comments:({comments.length})</h2>
+        <h2>Comments:({comments.length})</h2>
         {
-          comments.map(comment => <Comments comment = {comment}></Comments>)
+          comments.map(comment => <Comments comment={comment}></Comments>)
         }
       </div>
     </div>
-
   );
 };
 

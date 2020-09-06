@@ -1,11 +1,11 @@
 .post-box {
-  border: 1px solid gray;
-  border-radius: 5px;
-  padding: 20px;
-  margin-bottom: 15px;
+  padding: 10px;
   transition: 0.3s all ease-in-out;
 }
-.post-box:hover{
+.post-box .MuiPaper-elevation1:hover {
   background: #e0e2f2;
   box-shadow: 4px 5px 15px grey;
+}
+.post-box .MuiPaper-elevation1 {
+  border: 1px solid gray;
 }

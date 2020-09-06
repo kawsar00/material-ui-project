@@ -36,7 +36,7 @@ const Comments = (props) => {
   useEffect(() => {
     fetch(`https://randomuser.me/api/`)
       .then(res => res.json())
-      .then(data => setUserImage(data.results[0].picture.large))
+      .then(data => setUserImage(data.results[0].picture.medium))
   }, [])
   
   return (
@@ -53,7 +53,7 @@ const Comments = (props) => {
               <Grid item xs>
                 <h4>Name: {name}</h4>
                 <h5>Email: {email}</h5>
-                <p><b>Comment:</b> {body}</p>
+                <p>{body}</p>
               </Grid>
             </Grid>
           </Grid>
