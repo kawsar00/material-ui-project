@@ -23,11 +23,17 @@ const PostDetails = () => {
     .then(comment => setComments(comment))
   }, [])
 
-
+//postDetails style
+const postDetailStyle = {
+  background: 'rgb(242 242 242)',
+  boxShadow: '4px 5px 15px grey',
+  padding: '20px',
+}
 
   return (
     <div>
-      <div className="post-box">
+      <h1 style={{textAlign: 'center'}}>Post Details</h1>
+      <div style={postDetailStyle}>
         <h1>Title: {postDetails.title}</h1>
         <p>{postDetails.body}</p>
       </div>
@@ -36,8 +42,6 @@ const PostDetails = () => {
         {
           comments.map(comment => <Comments comment = {comment}></Comments>)
         }
-      
-
       </div>
     </div>
 

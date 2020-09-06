@@ -12,22 +12,19 @@ const useStyles = makeStyles((theme) => ({
   },
 })); //style for button
 
-
-
 const Post = (props) => {
   const classes = useStyles();
-  const {title, id} = props.post
+  const { title, id } = props.post
 
   //code for get useHistory by button
-const history = useHistory();
-const handleClick = (userId) => {
-  history.push(`/posts/${userId}`);
-}
-
+  const history = useHistory();
+  const handleClick = (userId) => {
+    history.push(`/posts/${userId}`);
+  }
   return (
     <div className="post-box">
       <h2>Title: {title}</h2>
-      <Button onClick = {() => {handleClick(id)}} variant="contained" color="primary">
+      <Button onClick={() => { handleClick(id) }} variant="contained" color="primary">
         READ MORE &#x0003E;&#x0003E;
       </Button>
     </div>

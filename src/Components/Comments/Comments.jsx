@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import './Comments.css'
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
 import ButtonBase from '@material-ui/core/ButtonBase';
 
 const useStyles = makeStyles((theme) => ({
@@ -23,58 +23,43 @@ const useStyles = makeStyles((theme) => ({
     display: 'block',
     maxWidth: '100%',
     maxHeight: '100%',
-    
+
   },
 }));
 
-
 const Comments = (props) => {
- const {name, email, body}= props.comment
- const classes = useStyles();
+  const classes = useStyles();
+  const { name, email, body } = props.comment
 
- 
-//to get comment image
-const [userImage, setUserImage] = useState([])
- useEffect(() => {
-   fetch(`https://randomuser.me/api/`)
-   .then(res => res.json())
-   .then(data => {
-    // console.log(data.results[0].picture.large)
-    setUserImage(data.results[0].picture.large)
-   })
- }, [])
-
+  //to get comment image
+  const [userImage, setUserImage] = useState([])
+  useEffect(() => {
+    fetch(`https://randomuser.me/api/`)
+      .then(res => res.json())
+      .then(data => setUserImage(data.results[0].picture.large))
+  }, [])
+  
   return (
-    <div className={classes.root}>
-    <Paper className={classes.paper}>
-      <Grid container spacing={2}>
-        <Grid item>
-          <ButtonBase className={classes.image}>
-            <img style={{borderRadius: '50%'}} alt="userImage" src={userImage} />
-          </ButtonBase>
-        </Grid>
-        <Grid item xs={12} sm container>
-          <Grid item xs container direction="column" spacing={2}>
-            <Grid item xs>
-              {/* <Typography gutterBottom variant="subtitle1">
-              <h4>Name: {name}</h4>
-              </Typography>
-              <Typography variant="body2" gutterBottom>
-                Full resolution 1920x1080 • JPEG
-              </Typography> */}
-              <h4>Name: {name}</h4>
-            <h6>Email: {email}</h6>
-            </Grid>
-            <Grid item>
-              <Typography variant="body2" style={{  }}>
-               <b>Comment:</b>  {body}
-              </Typography>
+    <div id="commentStyle" className={classes.root}>
+      <Paper className={classes.paper}>
+        <Grid container spacing={2}>
+          <Grid item>
+            <ButtonBase className={classes.image}>
+              <img style={{ borderRadius: '50%' }} alt="userImage" src={userImage} />
+            </ButtonBase>
+          </Grid>
+          <Grid item xs={10} sm container>
+            <Grid item xs container direction="column" spacing={2}>
+              <Grid item xs>
+                <h4>Name: {name}</h4>
+                <h5>Email: {email}</h5>
+                <p><b>Comment:</b> {body}</p>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>
-      </Grid>
-    </Paper>
-  </div>
+      </Paper>
+    </div>
   );
 };
 

@@ -5,15 +5,16 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 import NoMatch from './Components/NoMatch/NoMatch';
 import PostDetails from './Components/PostDetails/PostDetails';
+import Header from './Components/Header/Header';
 
 
 function App() {
   return (
     <Router>
+      <Header></Header>
       <Switch>
         <Route path="/home">
         <PostContainer></PostContainer>
